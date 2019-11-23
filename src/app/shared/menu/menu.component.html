@@ -1,0 +1,51 @@
+<div class="menu-container">
+        <div class="logo" routerLink="/home" >
+        iTroc
+        </div>
+        <div class="navigation">
+        <div class="buttons" >
+            <button mat-button class="button" (click)="activateButton(0)" [ngClass]="{'active-button':buttons[0] == true}"
+            routerLink="/home">
+              HOME
+            </button>
+            <button mat-button class="button" (click)="activateButton(1)" [ngClass]="{'active-button':buttons[1] == true}"
+              routerLink="/people">
+              PEOPLE
+            </button>
+            <button mat-button class="button" (click)="activateButton(2)" [ngClass]="{'active-button':buttons[2] == true}"
+            routerLink="/products">
+              PRODUCTS
+            </button>
+          </div>
+        </div>
+        <div class="navigation">
+          <div class="profile" >
+            <img [src]="user.picURL" alt="profilePic" [matMenuTriggerFor]="menu"  class="picture" (menuClosed)="toggleDisplay()" (menuOpened)="toggleDisplay()" #menuTrigger="matMenuTrigger">
+            <div class="down-arrow" [matMenuTriggerFor]="menu" [ngClass]="{'disabled': disableButtons}" (menuClosed)="toggleDisplay()" (menuOpened)="toggleDisplay()" #menuTrigger="matMenuTrigger"></div>
+            <div class="menu-wrapper">
+                <div class="arrow-up" *ngIf="display[1]"></div>
+            <mat-menu #menu="matMenu" overlapTrigger="false" xPosition="before" class="user-menu">
+              <button mat-menu-item class="profile-menu-item profile-menu-pic-item" routerLink="/user" *ngIf="user">
+                <img [src]="user.picURL" alt="profilePic" class="profile-picture">
+                <div class="profile-text">
+                  <div class="title">My profile</div>
+                  <div class="subtitle">{{user.firstName}} {{user.lastName}}</div>
+                </div>
+              </button>
+              <button mat-menu-item class="profile-menu-item profile-menu-pic-item" routerLink="/user/company">
+                <img [src]="companyLogo" alt="profilePic" class="profile-picture">
+                <div class="profile-text">
+                  <div class="title">Company profile</div>
+                  <div class="subtitle" *ngIf="user && user.company">{{user.company.name}}</div>
+                  <div class="subtitle" *ngIf="user && !user.company">{{companyLabel}}</div>
+                </div>
+              </button>
+              <button mat-menu-item class="profile-menu-item profile-menu-pic-item" id="logout" (click)="logout()">
+                  <img src="/assets/icons/menu/log-out.svg" alt="log-out" class="icon">
+                  <div class="title sign-out">Sign out</div>
+                </button>
+            </mat-menu>
+          </div>
+          </div>
+        </div>
+      </div>
