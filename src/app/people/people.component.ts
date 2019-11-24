@@ -11,7 +11,7 @@ import { PeopleService } from './people.service';
   styleUrls: ['./people.component.scss']
 })
 export class PeopleComponent implements OnInit {
- public users: User[]=[];
+ public users: any[]=[];
  public searchForm:FormGroup;
  page:number=0;
  size:number=10;

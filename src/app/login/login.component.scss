@@ -114,7 +114,7 @@
     }
    
 }
-::ng-deep mat-form-field{
+:host ::ng-deep mat-form-field{
     border-radius:10px;
     width:100%;
     height:3.5rem;
@@ -139,17 +139,17 @@
     }
 
   }
-  ::ng-deep .mat-radio-button{
+ :host ::ng-deep .mat-radio-button{
 margin-bottom:.5rem;
 color:gray;
   }
   ::ng-deep .mat-radio-outer-circle{
     border-radius:2px!important;
 }
-::ng-deep .mat-radio-inner-circle{
+:host ::ng-deep .mat-radio-inner-circle{
     border-radius:0;
 }
-::ng-deep .mat-radio-checked{
+:host ::ng-deep .mat-radio-checked{
     .mat-radio-outer-circle{
     border-color:#c653c6!important;}
     .mat-radio-inner-circle{
