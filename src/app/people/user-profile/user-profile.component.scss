@@ -1,0 +1,73 @@
+.container{
+    width:100%;
+    .user-container{
+        .header{
+            display: flex;
+            justify-content: flex-start;
+            align-content: center;
+            justify-items: center;
+            align-items: center;
+            width:70%;
+            height:10rem;
+            border-bottom:2px solid #6b9fc7;
+            margin-left:auto;
+            margin-right:auto;
+            margin-top:3rem;
+            margin-bottom:0;
+            padding-left:5rem;
+            .pic-wrapper{
+                width:auto;
+                height:6rem;
+                border-radius:100%;
+                overflow: hidden;
+                margin-right:3rem;
+                img{
+                    height:100%;
+                }
+            }
+            .name{
+                color:#2a516f;
+                font-size: 1.2rem;
+                font-weight: 600;
+            }
+            .email{
+                color:gray;
+                font-size: .8rem;
+            }
+            .adress{
+                color:gray;
+                font-size: .8rem;
+            }
+
+
+        }
+        .description{
+            display: flex;
+            justify-content: flex-start;
+            align-content: center;
+            justify-items: center;
+            align-items: center;
+            width:70%;
+            height:10rem;
+            border-bottom:2px solid #b5cfe3;
+            margin:auto;
+            padding-left:5rem;
+            .title{
+                font-size:1.2rem;
+                color: #90b7d5;
+                margin-right:2rem;
+            }
+            p{
+                font-size: 1rem;
+                color:gray;
+            }
+        }
+        }
+}
+.flex-column{
+    height:60%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}

@@ -8,7 +8,7 @@ import { environment } from '../../environments/environment';
 })
 export class LoginService {
  
-
+private url:string=environment.apiUrl;
   constructor(private http: HttpClient) { 
   }
   creationHeader = {
@@ -16,6 +16,31 @@ export class LoginService {
       'Content-Type': 'text/html'
     })
   }
+  getUser(): any {
+    return JSON.parse(localStorage.getItem('user'));
+  }
+  setUser(user: any): void {
+    localStorage.setItem('user', JSON.stringify(user));
+  }
+  getToken(): string {
+    return localStorage.getItem('token');
+  }
 
- 
+  setToken(token: string): void {
+    localStorage.setItem('token', token);
+  }
+  getLogin(user): Observable<any> {
+    let header = {
+      headers: new HttpHeaders({
+        'DoNotIntercept': ''
+      })
+    };
+    return this.http.post<any>(this.url+"/login",user,header);
+  }
+  getLogout(): Observable<any> {
+    return this.http.get<any>(environment.apiUrl+'/logout', this.creationHeader)
+  }
+  register( user):Observable<any>{
+    return this.http.post<any>(this.url+"/register",user);
+  }
 }

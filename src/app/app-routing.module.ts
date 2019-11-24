@@ -15,6 +15,14 @@ const routes: Routes = [
   {
     path:'home',
     loadChildren:'./home/home.module#HomeModule'
+  },
+  {
+    path:"people",
+    loadChildren:'./people/people.module#PeopleModule'
+  },
+  {
+    path:"products",
+    loadChildren:'./products/products.module#ProductsModule'
   }
 ];
 

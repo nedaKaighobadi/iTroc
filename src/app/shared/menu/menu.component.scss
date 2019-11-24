@@ -4,11 +4,11 @@
     width: 100%;
     height: 4rem;
     padding-left: 10%;
-    padding-right: 10%;
+    padding-right: 2%;
     display: flex;
     justify-content: space-between;
     box-sizing: border-box;
-    background-color: 	 #732673;
+    background-color: #dae7f1;
     font-family: 'Avenir';
    
 
@@ -17,7 +17,7 @@
         font-weight:700;
         font-size:2rem;
         line-height:4rem;
-        color:#cce5ff;
+        color:#3f7aa6;
         animation-name:color;
         animation-duration: 1s;
         animation-iteration-count: 2;
@@ -37,7 +37,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            color: #cce5ff;
+            color: #3f7aa6;
             font-family: 'Avenir';
 
             .button {
@@ -47,6 +47,7 @@
                 margin-right: 10px;
                 height: 70%;
                 padding: 0 1rem 0 1rem;
+                letter-spacing: 1px;
 
                 ::ng-deep .mat-button-wrapper {
                     padding: 10px;
@@ -55,41 +56,57 @@
                     font-family: 'Avenir Next';
                 }
                 &:hover{
-                    color: white;
-                    border-bottom:2px solid #cce5ff;
-                    border-top: 2px solid #cce5ff;
+                    color: #3f7aa6;
+                    border-bottom:2px solid #3f7aa6;
+                    border-top: 2px solid #3f7aa6;
                 }
             }
 
             .active-button {
-                color: white;
-                border-bottom:2px solid #cce5ff;
-                border-top: 2px solid #cce5ff;
+                color: #3f7aa6;
+                border-bottom:2px solid #3f7aa6;
+                border-top: 2px solid #3f7aa6;
             }
         }
 
         .profile {
             height: 60%;
             width: auto;
-            border-left: 1px solid #f2d9f2;
+            border-left: 1px solid #3f7aa6;
             margin-left: 30px;
             display: flex;
             align-items: center;
 
-            .notification-icon {
-                width: 18px;
-                height: 18px;
+            .cart-icon {
+                width: 20px;
+                height: 20px;
                 margin-left: 30px;
                 cursor: pointer;
             }
-
+           .pic-wrapper{
+               cursor: pointer;
+               color:white;
+               font-size:1rem;
+               font-weight:600;
+               display:flex;
+               justify-content: space-around;
+               justify-items: center;
+               align-items: center;
+               height:100%;
+               width:7rem;
+               background-color:#6b9fc7;
+               border-radius: 10px;
+               margin-left: 25px;
+               padding:.2rem .5rem;
+               letter-spacing: 1px;
+               
             .picture {
                 width: 30px;
                 height: 30px;
                 border-radius: 50%;
-                margin-left: 30px;
                 cursor: pointer;
             }
+          }
         }
     }
 }
@@ -141,16 +158,13 @@
 .down-arrow {
     width: 0;
     height: 0;
-    margin-left: 5px;
+    margin-left: 3px;
     border-left: 4px solid transparent;
     border-right: 4px solid transparent;
     border-top: 4px solid white;
     cursor: pointer;
 }
 
-#logout {
-   
-}
 
 ::ng-deep .mat-menu-panel {
     border-radius: 5px !important;

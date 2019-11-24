@@ -18,7 +18,7 @@ export class MenuComponent implements OnInit {
   public disableButtons: boolean;
   public buttons: boolean[] = [false, false, false];
   public notifications: Notification[]=[];
-  public user={firstName:"ana",lastName:"blabla",picURL:""};
+  public user:any;
   public companyLabel: string="no company";
   public company: string;
   public companyLogo: string;
@@ -30,6 +30,7 @@ export class MenuComponent implements OnInit {
   public disableSeeMoreButton:boolean=false;
   public hasUnviewedNotifications: boolean=false;
   public moreNotifications:Notification[]=[];
+  public url:string="./assets/blank-profile.png"
 
   constructor(private loginService: LoginService, public router: Router,public dialog: MatDialog) {
     if(this.user){
@@ -43,10 +44,19 @@ export class MenuComponent implements OnInit {
   }
   ngOnInit() {
     this.buttons[this.activeTab] = true;
+    this.user=this.loginService.getUser();
     this.company = localStorage.getItem('company');
     this.companyLogo = localStorage.getItem('company-logo');
+    console.log(this.user);
    
     
     }
- 
+    public activateButton(index: number): void {
+      this.buttons.fill(false);
+      if (index != 3)
+        this.buttons[index] = true; 
+    }
+ public logOut(){
+   this.loginService.getLogout().subscribe(el=>console.log(el));
+ }
 }

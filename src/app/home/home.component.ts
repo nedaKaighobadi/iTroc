@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginService } from '../login/login.service';
+import { User } from '../user';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -6,10 +9,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-
-  constructor() { }
+  public user:any;
+  constructor(private loginService:LoginService,private router:Router) { }
 
   ngOnInit() {
+  if(this.loginService.getToken()){
+    console.log("hello");
+  }
+  else{
+    this.router.navigate(['/login']);
+  }
   }
 
 }

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { LoginService } from './login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +13,7 @@ export class LoginComponent implements OnInit {
  public isSigningUp:boolean=false;
  public loginForm:FormGroup;
  public registerForm:FormGroup;
-  constructor(private formBuilder:FormBuilder) { }
+  constructor(private loginService:LoginService,private formBuilder:FormBuilder,private router:Router) { }
 
   ngOnInit() {
     this.loginForm=this.formBuilder.group({
@@ -29,10 +31,43 @@ export class LoginComponent implements OnInit {
     });
   }
 public signIn(){
+  if(this.isSigningIn){
+    this.loginService.getLogin({email:this.loginForm.value.username,password:this.loginForm.value.password}).subscribe(response=>
+      {
+        console.log(response);
+        this.loginService.setUser(response.user);
+        this.loginService.setToken(response.token);
+        this.router.navigate(['/home']);
+      });
+  }
+  if(this.isSigningUp==true){
+    let isBuyer:boolean;
+    let company:boolean;
+    if(this.registerForm.value.userType=="buyer"){
+      isBuyer=true;
+    }
+    else{
+      isBuyer=false;
+    }
+    if(this.registerForm.value.type=="company"){
+      company=true;
+    }
+    else{
+      company=false;
+    }
+    if(this.registerForm.valid){
+    let user={name:this.registerForm.value.name, phone: this.registerForm.value.phone,email: this.registerForm.value.email, password:this.registerForm.value.password,
+    adress:this.registerForm.value.adress, isBuyer:isBuyer, company:company};
+    this.loginService.register(user).subscribe(response=>{console.log(response);
+      console.log(user);
+      this.register();
+    
+    })
+  }
+  } 
 }
 public register(){
-  this.isSigningUp=!this.isSigningUp;
-  this.isSigningIn=!this.isSigningIn;
-  
+this.isSigningUp=!this.isSigningUp;
+this.isSigningIn=!this.isSigningIn; 
 }
 }
