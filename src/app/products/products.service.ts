@@ -3,6 +3,7 @@ import { environment } from 'src/environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { LoginService } from '../login/login.service';
 import { Observable } from 'rxjs';
+import { Product } from '../product';
 
 @Injectable({
   providedIn: 'root'
@@ -45,6 +46,13 @@ public getProducts(size:number,page:number,category:string,subcategory:string,mi
     }
   }
   return this.http.get<any>(this.url+"/products",header)
+}
+public addProduct(product:Product):Observable<any>{
+  let header = {
+    headers: new HttpHeaders({
+      'auth-token': this.token
+    })}
+    return this.http.post<any>(this.url+"/products",product,header)
 }
 
 }
