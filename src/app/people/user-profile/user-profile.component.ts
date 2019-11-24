@@ -9,7 +9,7 @@ import { PeopleService } from '../people.service';
   styleUrls: ['./user-profile.component.scss']
 })
 export class UserProfileComponent implements OnInit {
-public user:User;
+public user:any;
 public userId:string;
   constructor(private activatedRoute:ActivatedRoute,private peopleService: PeopleService) { 
   }
