@@ -24,7 +24,7 @@ export class PeopleService {
         
       }
     }
-      return this.http.get<any>(this.url+'/users',header);
+      return this.http.get<any>(this.url+'/user');
   }
 
   public getUser(id:string):Observable<any>{
@@ -32,6 +32,6 @@ export class PeopleService {
       headers: new HttpHeaders({
         'auth-token': this.token
       })}
-      return this.http.get<any>(this.url+'/users/'+id,header);
+      return this.http.get<any>(this.url+'/user/'+id,header);
   }
 }

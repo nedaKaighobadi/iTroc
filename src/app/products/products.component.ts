@@ -19,18 +19,20 @@ export class ProductsComponent implements OnInit {
  public isCategorySet:boolean=false;
  public grid:boolean=true;
   constructor(private formBuilder:FormBuilder,private productsService:ProductsService) {
+
   }
 
   ngOnInit() {
-this.filterForm= this.formBuilder.group({
-  category:[''],
-  subcategory:[''],
-  price:['']
+    this.filterForm= this.formBuilder.group({
+    category:[''],
+    subcategory:[''],
+    price:['']
 
 });
-this.getProducts();
-this.productsService.getCategories().subscribe(categories=>{this.categories=categories
-console.log(categories)})
+ this.getProducts();
+// this.productsService.getCategories().subscribe(categories=>{this.categories=categories
+// console.log(categories)})
+
   }
 
 public setSubcategories(id:string){

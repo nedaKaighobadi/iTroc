@@ -30,12 +30,22 @@
                         <input matInput type="text" formControlName="email" class="input-field" autocomplete="off">
                     </mat-form-field>
                     <mat-form-field floatLabel="always">
+                        <mat-label class="label">USERNAME</mat-label>
+                        <input matInput type="text"  formControlName="username" class="input-field" autocomplete="off">
+                </mat-form-field>
+                    <mat-form-field floatLabel="always">
                             <mat-label class="label">PASSWORD</mat-label>
                             <input matInput type="password"  formControlName="password" class="input-field" autocomplete="off">
                     </mat-form-field>
                     <mat-form-field floatLabel="always">
-                            <mat-label class="label">ADRESS</mat-label>
-                            <input matInput type="text"  formControlName="adress" class="input-field" autocomplete="off">
+                            <mat-label class="label">COUNTRY</mat-label>
+                            <mat-select formControlName="country" class="input-field">
+                                <mat-option *ngFor="let country of countries" [value]="country.name">{{country.name}}</mat-option>
+                                </mat-select>
+                    </mat-form-field>
+                    <mat-form-field floatLabel="always">
+                            <mat-label class="label">CITY</mat-label>
+                            <input matInput type="text"  formControlName="city" class="input-field" autocomplete="off">
                     </mat-form-field>
                     <div class="radio-buttons">
                         <label class="label">Are you planning to be a buyer or a seller?</label>
@@ -43,14 +53,6 @@
                                 <mat-radio-button value='buyer'>Buyer</mat-radio-button>
                                 <mat-radio-button value='seller'>Seller</mat-radio-button>
                           </mat-radio-group>
-                        </div>
-                    <div class="radio-buttons" *ngIf="registerForm.value.userType">
-                        <label class="label" *ngIf="registerForm.value.userType=='buyer'">Are you buying as a company?</label>
-                        <label class="label" *ngIf="registerForm.value.userType=='seller'"> Are you selling to companies?</label>  
-                        <mat-radio-group formControlName="type" class="radio-buttons">
-                                    <mat-radio-button value='private'>Private</mat-radio-button>
-                                    <mat-radio-button value='company'>Company</mat-radio-button>
-                            </mat-radio-group>
                         </div>
          </form>
          <button class="login-button" (click)="signIn()">REGISTER</button>

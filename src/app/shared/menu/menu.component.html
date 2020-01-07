@@ -29,7 +29,7 @@
             <div class="menu-wrapper">
                 <div class="arrow-up" *ngIf="display[1]"></div>
             <mat-menu #menu="matMenu" overlapTrigger="false" xPosition="before" class="user-menu">
-              <button mat-menu-item class="profile-menu-item profile-menu-pic-item" routerLink="/user" *ngIf="user">
+              <button mat-menu-item class="profile-menu-item profile-menu-pic-item" (click)="navigateToUserProfile(user._id)" *ngIf="user">
                 <img [src]="url" alt="profilePic" class="profile-picture">
                 <div class="profile-text">
                   <div class="title">My profile</div>

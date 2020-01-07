@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from './login.service';
 import { Router } from '@angular/router';
+import { UserLogin } from '../UserLogin';
+import { User } from '../user';
+import { Adress } from '../adress';
 
 @Component({
   selector: 'app-login',
@@ -13,6 +16,7 @@ export class LoginComponent implements OnInit {
  public isSigningUp:boolean=false;
  public loginForm:FormGroup;
  public registerForm:FormGroup;
+ public countries:any[];
   constructor(private loginService:LoginService,private formBuilder:FormBuilder,private router:Router) { }
 
   ngOnInit() {
@@ -24,40 +28,40 @@ export class LoginComponent implements OnInit {
       name:['',Validators.required],
       phone:['',Validators.compose([Validators.pattern(/^\d{10}$/),Validators.required])],
       email:['',Validators.compose([Validators.email,Validators.required])],
+      username:['',Validators.required],
       password:['',Validators.required],
-      adress:['',Validators.required],
+      city:['',Validators.required],
+      country:['',Validators.required],
       userType:['',Validators.required],
-      type:['',Validators.required]
     });
+    this.loginService.getCountries().subscribe(countries=> {this.countries=countries;
+      console.log(countries);});
+
   }
 public signIn(){
   if(this.isSigningIn){
-    this.loginService.getLogin({email:this.loginForm.value.username,password:this.loginForm.value.password}).subscribe(response=>
+    let userLoginInfo:UserLogin= new UserLogin(this.loginForm.value.username,this.loginForm.value.password);
+    this.loginService.getLogin(userLoginInfo).subscribe(response=>
       {
         console.log(response);
-        this.loginService.setUser(response.user);
+        this.loginService.setUser(response);
         this.loginService.setToken(response.token);
         this.router.navigate(['/home']);
       });
   }
   if(this.isSigningUp==true){
-    let isBuyer:boolean;
-    let company:boolean;
-    if(this.registerForm.value.userType=="buyer"){
-      isBuyer=true;
+    let isSeller:boolean;
+    if(this.registerForm.value.userType=="seller"){
+      isSeller=true;
     }
     else{
-      isBuyer=false;
-    }
-    if(this.registerForm.value.type=="company"){
-      company=true;
-    }
-    else{
-      company=false;
+      isSeller=false;
     }
     if(this.registerForm.valid){
-    let user={name:this.registerForm.value.name, phone: this.registerForm.value.phone,email: this.registerForm.value.email, password:this.registerForm.value.password,
-    adress:this.registerForm.value.adress, isBuyer:isBuyer, company:company};
+    let adress: Adress= new Adress(this.registerForm.value.city,this.registerForm.value.country);
+    console.log(adress)
+    let user= new User(this.registerForm.value.name,this.registerForm.value.phone, this.registerForm.value.email, this.registerForm.value.username,this.registerForm.value.password,adress,
+      this.registerForm.value.isSeller);
     this.loginService.register(user).subscribe(response=>{console.log(response);
       console.log(user);
       this.register();

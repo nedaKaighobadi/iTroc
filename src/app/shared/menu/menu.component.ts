@@ -57,6 +57,18 @@ export class MenuComponent implements OnInit {
         this.buttons[index] = true; 
     }
  public logOut(){
-   this.loginService.getLogout().subscribe(el=>console.log(el));
+   this.loginService.getLogout().subscribe(el=>{console.log(el);
+  this.router.navigate(['/login'])}
+   );
  }
+ navigateToUserProfile(userId){
+  let currentUser;
+    currentUser=this.loginService.getUser();
+    if(userId==currentUser._id){
+      this.router.navigate(["/people/",userId]);
+    }
+    else{
+    this.router.navigate(["people/",userId]);
+    }
+}
 }

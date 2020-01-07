@@ -17,28 +17,19 @@ export class PeopleComponent implements OnInit {
  size:number=10;
 
   constructor(private loginService:LoginService,private peopleService:PeopleService,public router:Router,private formBuilder: FormBuilder) {
-    // let user= new User(1,"ana maria","this is my despbsvbjksbdxk","0722375456","Timisoara,Romania","","ana.blabla@gmail.com")
-    // this.users[0]=user;
-    // this.users[1]=user;
-    // this.users[2]=user;
-    // this.users[3]=user;
    }
 
   ngOnInit() {
     this.searchForm=this.formBuilder.group({
       name:['']
     });
-    this.getUsers(this.page,this.size,"");
+     this.getUsers(this.page,this.size,"");
   }
-navigateToUserProfile(userId){
-  let currentUser;
-    currentUser=this.loginService.getUser();
-    if(userId==currentUser._id){
-      this.router.navigate(["/user"]);
-    }
-    else{
+  navigateToUserProfile(userId:string){
+  
     this.router.navigate(["people/",userId]);
-    }
+    
+    
 }
 public getUsers(page:number,size:number,nameSearch:string){
   this.peopleService.getPeople(size,page,nameSearch).subscribe(users=>{
@@ -51,4 +42,5 @@ public searchUser(){
   this.getUsers(this.page,this.size,this.searchForm.value.name);
   console.log(this.searchForm.value.name)
 }
+
 }

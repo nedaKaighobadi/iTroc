@@ -5,6 +5,7 @@ import { PeopleComponent } from './people.component';
 import{UserProfileComponent} from './user-profile/user-profile.component'
 import { PeopleRoutingModule } from './people-routing.module';
 import { CurrentUserProfileComponent } from './current-user-profile/current-user-profile.component';
+import { AddProductComponent } from './user-profile/add-product/add-product.component';
 
 @NgModule({
     imports: [
@@ -15,7 +16,8 @@ import { CurrentUserProfileComponent } from './current-user-profile/current-user
     providers: [
   ],
   exports: [],
-  declarations: [PeopleComponent,UserProfileComponent, CurrentUserProfileComponent],
+  entryComponents:[AddProductComponent],
+  declarations: [PeopleComponent,UserProfileComponent, CurrentUserProfileComponent, AddProductComponent],
   
   })
   export class PeopleModule { }

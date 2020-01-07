@@ -45,14 +45,19 @@ public getProducts(size:number,page:number,category:string,subcategory:string,mi
       max:maxPrice.toString()
     }
   }
-  return this.http.get<any>(this.url+"/products",header)
+  return this.http.get<any>(this.url+"/Products/Get")
+}
+public getProductsBySeller(userId: string):Observable<any>{
+  return this.http.get<any>(this.url+"/products/GetBySeller",{params:{sellerId:userId}});
 }
 public addProduct(product:Product):Observable<any>{
   let header = {
     headers: new HttpHeaders({
       'auth-token': this.token
     })}
-    return this.http.post<any>(this.url+"/products",product,header)
+    return this.http.post<any>(this.url+"/products/create",product,header)
 }
-
+public updateProduct(product:Product):Observable<any>{
+  return this.http.put<any>(this.url+"/products/update",product);
+}
 }

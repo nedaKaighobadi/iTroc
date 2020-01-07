@@ -29,8 +29,8 @@
         </div>
         <div class="product-grid" *ngIf="grid">
             <div class="product" *ngFor="let product of products">
-                <img src="./assets/icons/tomatoes.jpg" class="pic">
-                <div class="location">{{product.location}}</div>
+                <img [src]="product.pic" class="pic">
+                <div class="location">{{product.sellerAdress}}</div>
                 <div class="description">{{product.description}}</div>
                 <div class="price">{{product.price}} <span *ngIf="product.units">/kg</span> <span *ngIf="!product.units">/pcs</span></div>
                 <button matButton >Add to cart <img src="./assets/icons/menu/add.svg" alt="icon"></button>
