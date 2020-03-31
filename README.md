@@ -26,38 +26,21 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
-<div class='filetree'>
-    <div class='file'>
-        sample-dir
-    </div>
-    <div class='children'>
-        <div class='file'>
-          src
-        </div>
-        <div class='children'>
-            <div class='file'>
-              app
-            </div>
-            <div class='children'>
-                <div class='file'>
-                  app.component.ts
-                </div>
-                <div class='file'>
-                  app.module.ts
-                </div>
-            </div>
-            <div class='file'>
-              styles.css
-            </div>
-            <div class='file'>
-              tsconfig.json
-            </div>
-        </div>
-        <div class='file'>
-          node_modules ...
-        </div>
-        <div class='file'>
-          package.json
-        </div>
-    </div>
-</div>
+├── app
+│   ├── css
+│   │   ├── **/*.css
+│   ├── favicon.ico
+│   ├── images
+│   ├── index.html
+│   ├── js
+│   │   ├── **/*.js
+│   └── partials/template
+├── dist (or build)
+├── node_modules
+├── bower_components (if using bower)
+├── test
+├── Gruntfile.js/gulpfile.js
+├── README.md
+├── package.json
+├── bower.json (if using bower)
+└── .gitignore 
