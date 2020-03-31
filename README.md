@@ -45,39 +45,16 @@ project
     │   file022.txt
 ```
 ```
-<div class='filetree'>
-    <div class='file'>
-        sample-dir
-    </div>
-    <div class='children'>
-        <div class='file'>
-          src
-        </div>
-        <div class='children'>
-            <div class='file'>
-              app
-            </div>
-            <div class='children'>
-                <div class='file'>
-                  app.component.ts
-                </div>
-                <div class='file'>
-                  app.module.ts
-                </div>
-            </div>
-            <div class='file'>
-              styles.css
-            </div>
-            <div class='file'>
-              tsconfig.json
-            </div>
-        </div>
-        <div class='file'>
-          node_modules ...
-        </div>
-        <div class='file'>
-          package.json
-        </div>
-    </div>
-</div>
+.
+    ├── app                      # Main modules contain each app's entry point
+    ├── components               # Component modules of the apps
+    │   ├── application          # Higher level modules. Includes http layer. Usually groups together service modules
+    │   ├── service              # Service modules. Defining database access and 3rd party api access
+    │   └── utility              # Common utility modules. The most basic building block of the applications
+    ├── dev-tools                # Usefull resources for dev purposes (e.g postman collection export, grafana dashboard export)
+    ├── documentation            # Documentation and tutorials 
+    ├── build                    # Dockerfiles used for building docker images
+    ├── scripts                  # Usefull scripts for dev purposes
+    ├── z_test_stuff             # Relevant resources for the tests
+    └── ...
 ```
