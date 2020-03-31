@@ -26,21 +26,15 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
-├── app
-│   ├── css
-│   │   ├── **/*.css
-│   ├── favicon.ico
-│   ├── images
-│   ├── index.html
-│   ├── js
-│   │   ├── **/*.js
-│   └── partials/template
-├── dist (or build)
-├── node_modules
-├── bower_components (if using bower)
-├── test
-├── Gruntfile.js/gulpfile.js
-├── README.md
-├── package.json
-├── bower.json (if using bower)
-└── .gitignore 
+ .
+    ├── app                      # Main modules contain each app's entry point
+    ├── components               # Component modules of the apps
+    │   ├── application          # Higher level modules. Includes http layer. Usually groups together service modules
+    │   ├── service              # Service modules. Defining database access and 3rd party api access
+    │   └── utility              # Common utility modules. The most basic building block of the applications
+    ├── dev-tools                # Usefull resources for dev purposes (e.g postman collection export, grafana dashboard export)
+    ├── documentation            # Documentation and tutorials 
+    ├── build                    # Dockerfiles used for building docker images
+    ├── scripts                  # Usefull scripts for dev purposes
+    ├── z_test_stuff             # Relevant resources for the tests
+    └── ...
