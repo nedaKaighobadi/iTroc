@@ -44,3 +44,40 @@ project
     │   file021.txt
     │   file022.txt
 ```
+```
+<div class='filetree'>
+    <div class='file'>
+        sample-dir
+    </div>
+    <div class='children'>
+        <div class='file'>
+          src
+        </div>
+        <div class='children'>
+            <div class='file'>
+              app
+            </div>
+            <div class='children'>
+                <div class='file'>
+                  app.component.ts
+                </div>
+                <div class='file'>
+                  app.module.ts
+                </div>
+            </div>
+            <div class='file'>
+              styles.css
+            </div>
+            <div class='file'>
+              tsconfig.json
+            </div>
+        </div>
+        <div class='file'>
+          node_modules ...
+        </div>
+        <div class='file'>
+          package.json
+        </div>
+    </div>
+</div>
+```
